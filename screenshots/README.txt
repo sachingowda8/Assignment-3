@@ -1,14 +1,22 @@
-Screenshots Folder
+SCREENSHOTS FOLDER
 ==================
 
-Add screenshots of each working program here:
+Add screenshots of each program running here.
 
-  - openai_output.png      → Screenshot of openai_example.py running
-  - groq_output.png        → Screenshot of groq_example.py running
-  - ollama_output.png      → Screenshot of ollama_example.py running
-  - huggingface_output.png → Screenshot of huggingface_example.py running
-  - gemini_output.png      → Screenshot of gemini_example.py running
-  - cohere_output.png      → Screenshot of cohere_example.py running
+Required screenshots:
+  - openai_output.png       : Run openai_example.py, type a prompt, screenshot the response
+  - groq_output.png         : Run groq_example.py, type a prompt, screenshot the response
+  - ollama_output.png       : Run ollama_example.py, type a prompt, screenshot the response
+  - huggingface_output.png  : Run huggingface_example.py, type a prompt, screenshot the response
+  - gemini_output.png       : Run gemini_example.py, type a prompt, screenshot the response
+  - cohere_output.png       : Run cohere_example.py, type a prompt, screenshot the response
 
 How to take a screenshot on Windows:
-  Press Win + Shift + S to capture a region, then save as .png
+  1. Run the program in PowerShell/Command Prompt
+  2. Type a prompt and see the response
+  3. Press Windows+Shift+S to open the Snip tool
+  4. Select the window area with the response
+  5. Save it with the correct filename above
+
+Suggested test prompt for all programs:
+  "What is artificial intelligence? Explain in 3 bullet points."

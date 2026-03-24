@@ -1,6 +1,14 @@
-openai>=1.0.0
-groq>=0.4.0
+# Requirements for AI API Integration Assignment
+# Install all dependencies with: pip install -r requirements.txt
+
+# Core AI provider libraries
+openai>=1.0.0           # OpenAI GPT models
+groq>=0.4.0             # Groq Llama models (ultra-fast inference)
+google-generativeai>=0.7.0  # Google Gemini models
+cohere>=5.0.0           # Cohere command models
+
+# HTTP client for Hugging Face & Ollama REST APIs
 requests>=2.31.0
-google-generativeai>=0.5.0
-cohere>=5.0.0
-python-dotenv>=1.0.0
+
+# Optional: Environment variable management
+# python-dotenv>=1.0.0  # Uncomment if using a .env file for API keys
