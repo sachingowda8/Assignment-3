@@ -93,7 +93,7 @@ def query_cohere(prompt, history):
     try:
         client = _init_cohere()
         messages = list(history) + [{"role": "user", "content": prompt}]
-        response = client.chat(model="command-r-plus", messages=messages, max_tokens=500)
+        response = client.chat(model="command-r7b-12-2024", messages=messages, max_tokens=500)
         reply = response.message.content[0].text.strip()
         history.append({"role": "user", "content": prompt}); history.append({"role": "assistant", "content": reply})
         return reply

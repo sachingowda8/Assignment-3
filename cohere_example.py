@@ -14,7 +14,7 @@ if not api_key:
 
 co = cohere.ClientV2(api_key=api_key)
 
-DEFAULT_MODEL = "command-r-plus"
+DEFAULT_MODEL = "command-r7b-12-2024"
 MAX_TOKENS = 500
 TEMPERATURE = 0.7
 MAX_RETRIES = 3
