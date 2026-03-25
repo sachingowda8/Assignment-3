@@ -2,6 +2,8 @@ import os
 import time
 from groq import Groq
 
+# 1. API Configuration
+# Load Groq API key from environment variables
 api_key = os.getenv("GROQ_API_KEY")
 
 if not api_key:
@@ -12,21 +14,29 @@ if not api_key:
         "  Get your key at    : https://console.groq.com/"
     )
 
+# Initialize Groq client
 client = Groq(api_key=api_key)
 
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+# Default Model Parameters
+# Note: Using Llama 3.3 70B for high-quality responses
+DEFAULT_MODEL = "llama-3.3-70b-versatile" 
 MAX_TOKENS = 500
 TEMPERATURE = 0.7
 MAX_RETRIES = 3
 RETRY_DELAY = 2
 
+# Conversation history to maintain context during chat
 conversation_history = [
     {"role": "system", "content": "You are a helpful, knowledgeable, and friendly AI assistant."}
 ]
 
 def query_groq(prompt, model=DEFAULT_MODEL, max_tokens=MAX_TOKENS):
+    """
+    Queries the Groq API with persistent history and basic retry logic.
+    """
     conversation_history.append({"role": "user", "content": prompt})
 
+    # Retry logic handles transient network or rate limit errors
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             response = client.chat.completions.create(
@@ -47,10 +57,13 @@ def query_groq(prompt, model=DEFAULT_MODEL, max_tokens=MAX_TOKENS):
                 print(f"  [Retry {attempt}/{MAX_RETRIES}] Error: {error_msg}. Retrying in {wait}s...")
                 time.sleep(wait)
             else:
-                conversation_history.pop()
+                conversation_history.pop() # Clean history on failure
                 return f"Error querying Groq after {MAX_RETRIES} attempts: {error_msg}"
 
 def query_groq_streaming(prompt, model=DEFAULT_MODEL):
+    """
+    Streams response from Groq token-by-token for better UX.
+    """
     conversation_history.append({"role": "user", "content": prompt})
     full_response = ""
 
@@ -82,6 +95,7 @@ def query_groq_streaming(prompt, model=DEFAULT_MODEL):
         return f"Error during streaming: {str(e)}"
 
 if __name__ == "__main__":
+    # CLI Interface
     print("=" * 55)
     print("        Groq Llama - Query Interface")
     print("=" * 55)
@@ -96,7 +110,6 @@ if __name__ == "__main__":
         user_prompt = input("\nEnter your prompt: ").strip()
 
         if not user_prompt:
-            print("  [!] Empty prompt — please enter something.")
             continue
 
         if user_prompt.lower() in ("quit", "exit"):
