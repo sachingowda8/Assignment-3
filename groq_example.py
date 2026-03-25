@@ -14,7 +14,7 @@ if not api_key:
 
 client = Groq(api_key=api_key)
 
-DEFAULT_MODEL = "llama3-8b-8192"
+DEFAULT_MODEL = "llama-3.3-70b-versatile"
 MAX_TOKENS = 500
 TEMPERATURE = 0.7
 MAX_RETRIES = 3
